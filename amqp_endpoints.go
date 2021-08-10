@@ -10,6 +10,10 @@ type RoleAmqpEndpoints struct {
 	ch common_lib21.CommandHandler
 }
 
+func NewRoleAmqpEndpoints(ch common_lib21.CommandHandler) RoleAmqpEndpoints {
+	return RoleAmqpEndpoints{ch: ch}
+}
+
 func (r *RoleAmqpEndpoints) MakeCreateRoleAmqpEndpoint() amqp.Handler {
 	return func(message amqp.Message) *amqp.Message {
 		cmd := &CreateRoleCommand{}
